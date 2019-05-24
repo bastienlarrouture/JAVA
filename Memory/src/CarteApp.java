@@ -1,6 +1,7 @@
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,11 +13,12 @@ public class CarteApp extends FrameForDemoMaker {
 
 	private ImageIcon dosCarte = ResourceUtility.loadImage("images/dos.png");
 
-	private Jeu jeu = new Jeu();
+	private Jeu jeu;
 
 	public CarteApp() throws IOException{
 		super("Mémoire");
 		setDefaultBounds(100,100,900,600);
+		jeu = new Jeu();
 	}
 
 	@Override
@@ -26,11 +28,8 @@ public class CarteApp extends FrameForDemoMaker {
 		int cols = 6;
 		cp.setLayout(new GridLayout(rows, cols));
 
-		//Deque<ImageIcon> pioche = Jeu.creerPioche();
 
-		//		while(!pioche.isEmpty()) {
-		//			cp.add(createButton(pioche));
-		//		}
+		LinkedList<ImageIcon> pioche = jeu.creerPioche();
 
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < cols; j++) {
